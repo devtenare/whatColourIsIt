@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<title>#wearmask</title>
+	<style>
+		html,
+		body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			border: none;
+			outline: none;
+		}
+
+		body {
+			transition: 1s background-color;
+			text-align: center;
+			color: #fff;
+			display: flex;
+			justify-content: center;
+		}
+
+		.cont {
+			height: 300px;
+			margin: auto;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+		}
+
+		#time{
+			letter-spacing: 20px;
+			font: bold 60px/100% Arial;
+			margin: 40px 0;
+		}
+		#color{
+			font-family: 'Roboto', sans-serif;
+			font-size: 18px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="cont">
+		<h3 id='time'></h3>
+		<div id="color"></div>
+	</div>
+	<script>
+		function whatColourIsIt() {
+			var date = new Date(),
+				hour = date.getHours(),
+				minute = date.getMinutes(),
+				second = date.getSeconds();
+
+			minute = minute <= 9 ? '0' + minute : minute;
+			second = second <= 9 ? '0' + second : second;
+
+			document.body.style.backgroundColor = '#' + hour + String(minute) + second;
+
+			document.getElementById('time').innerHTML = hour + ':' + minute + ':' + second;
+
+			document.getElementById('color').innerHTML = '#' + hour + minute + second;
+
+		}
+
+		whatColourIsIt();
+		setInterval(whatColourIsIt, 1000);
+	</script>
+</body>
+
+</html>
